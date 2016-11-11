@@ -1,0 +1,24 @@
+- Was bedeutet das @ -Zeichen vor der Variablen data? Kann man außerhalb der class Umgebung darauf zugreifen?
+
+Das @-Zeichen deklariert eine Variable als Instanzvariable. Dadurch kann überall innerhalb der Instanz
+einer Klasse darauf zugegriffen werden. Von außerhalb ist dies normalerweise nicht möglich.
+Dies kann man mit instance_variable_get umgehen. Allerdings widerspricht das der Good Programming Practice
+der Encapsulation (= Datenkapselung) und ist daher nicht zu empfehlen.
+Alternativ und sinnvoller können für die Instanzvariable mittels attr_reader oder attr_accessor
+ein Getter bzw. ein Setter kreiert werden, oder man erstellt eigene Methoden dafür.
+
+- Was passiert, wenn man auf einem leeren Stack pop() ausführt? Wie kann der Programmierer
+    darauf reagieren, bzw. was passiert in der Funktion test , die in stackTest.rb definiert
+    ist?
+
+Es wird versucht, ein Element von dem Stack zu entfernen, dieser enthält allerdings keine Elemente.
+Genau das passiert in der Funktion test: Es wird eine neue Instanz von Stack erstellt,
+die ein leeres Array enthält. Anschließend wird versucht, das oberste Element des Arrays von Stack zu entfernen.
+Da dies nicht möglich ist, wird dieser Versuch im rescue-Block abgefangen.
+
+- Entfernen Sie die rescue -Anweisung. Was passiert nun, wenn Sie das Skript stackTest.rb
+    ausführen?
+
+Da nun das Entfernen eines Elements aus dem leeren Array der Stack-Instanz nicht mehr abgefangen wird,
+bricht das Programm unkontrolliert mit einem RuntimeError ab.
+
